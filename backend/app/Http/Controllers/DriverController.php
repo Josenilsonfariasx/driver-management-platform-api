@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateDriverRequest;
+use App\Http\Requests\{CreateDriverRequest};
 use App\Services\CreateDriverService;
 
 class DriverController extends Controller {
