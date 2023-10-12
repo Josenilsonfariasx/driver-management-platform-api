@@ -16,8 +16,7 @@ class CreateDriverRequest extends FormRequest {
             'name'=>['required'],
             'cpf'=>['required'],
             'telephone'=>['required'],
-            'password'=>['required', 'min:7'],
-            
+            'password' => ['required', 'min:7', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).*$/'],            
         ];
     }
 }
