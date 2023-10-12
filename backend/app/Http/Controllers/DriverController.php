@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Driver;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateDriverRequest;
+use App\Services\CreateDriverService;
 
 class DriverController extends Controller {
-  public function create(Request $request){
-    return Driver::create($request->all());
+  public function create(CreateDriverRequest $request){
+    $createDriverService = new CreateDriverService();
+    return $createDriverService->execute($request->all());
   }
 }
