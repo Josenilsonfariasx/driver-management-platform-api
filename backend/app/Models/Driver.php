@@ -41,4 +41,10 @@ class Driver extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    // No modelo Driver
+    public function transports() {
+        return $this->hasMany(Transport::class, 'driver_id');
+    }
+
 }

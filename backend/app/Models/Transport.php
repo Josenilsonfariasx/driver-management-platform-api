@@ -18,4 +18,8 @@ class Transport extends Authenticatable
         'year',
         'driver_id'
     ];
+    public function driver() {
+        return $this->belongsTo(Driver::class, 'driver_id');
+    }
+
 }
