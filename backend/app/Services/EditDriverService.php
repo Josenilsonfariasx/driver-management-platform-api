@@ -8,7 +8,7 @@ class EditDriverService {
     $driver = Driver::find($id);
 
     if (!$driver) {
-      throw new AppError('Driver not found');
+      throw new AppError('Driver not found', 404);
     }
 
     if (isset($data['cpf']) && $data['cpf'] !== $driver->cpf) {
