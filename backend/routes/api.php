@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\{AuthController, DeleteDriverController, DeleteTransportController, DriverController, EditDriverController, EditTransportController, GetAllDriversController, GetDriverByCpfController, GetDriverByNameController, GetInforDriverByIdController, TransportController};
+use App\Http\Controllers\{AuthController, DeleteDriverController, DeleteTransportController, DriverController, EditDriverController, EditTransportController, GetAllDriversController, GetDriverByCpfController, GetDriverByNameController, GetDriverByPlateFromTransportController, GetInforDriverByIdController, TransportController};
 use Illuminate\Support\Facades\Route;
 
 Route::post('/auth/login',[AuthController::class, 'login']);
@@ -10,6 +10,7 @@ route::middleware('jwt.verify')->group(function() {
   Route::get('/drivers/{id}/info', [GetInforDriverByIdController::class, 'getDriverById']);
   Route::get('/drivers/search/{name}', [GetDriverByNameController::class, 'getDriverByName']);
   Route::get('/drivers/search/cpf/{cpf}', [GetDriverByCpfController::class, 'getDriverByCpf']);
+  Route::get('/drivers/search/plate/{plate}', [GetDriverByPlateFromTransportController::class, 'getDriverByPlate']);
 
   // POST
   Route::post('/drivers',[DriverController::class, 'create']);
