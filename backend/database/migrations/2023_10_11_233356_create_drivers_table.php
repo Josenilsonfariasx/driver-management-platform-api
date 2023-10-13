@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create('drivers', function (Blueprint $table) {
             $table->uuid("id")->primary();
             $table->string("name");
-            $table->string("cpf")->unique();
+            $table->bigInteger("cpf")->unique();
             $table->string("telephone")->unique();
             $table->string("password");
             $table->timestamps();
