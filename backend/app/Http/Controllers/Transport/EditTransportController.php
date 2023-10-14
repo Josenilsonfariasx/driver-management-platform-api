@@ -1,9 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
+use App\Services\Transport\EditTransportService;
 use Illuminate\Http\Request;
-use App\Services\EditTransportService;
-
 class EditTransportController extends Controller {
   public function edit(Request $request, string $id){
     $data = $request->all();

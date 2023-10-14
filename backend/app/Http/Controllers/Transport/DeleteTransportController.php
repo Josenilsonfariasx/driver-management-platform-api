@@ -1,8 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
-use App\Services\DeleteDriverService;
-use App\Services\DeleteTransportService;
+use App\Services\Transport\DeleteTransportService;
 
 class DeleteTransportController extends Controller {
   public function delete(string $id){

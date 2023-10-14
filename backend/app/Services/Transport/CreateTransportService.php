@@ -1,9 +1,9 @@
 <?php
-namespace App\Services;
+namespace App\Services\Transport;
 
 use App\Exceptions\AppError;
 use App\Models\Transport;
-use App\Models\Driver; // Importe o modelo Driver
+use App\Models\Driver;
 
 class CreateTransportService {
   public function execute( array $data){

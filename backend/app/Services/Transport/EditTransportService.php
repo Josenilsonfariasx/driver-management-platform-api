@@ -1,5 +1,5 @@
 <?php
-namespace App\Services;
+namespace App\Services\Transport;
 use App\Exceptions\AppError;
 use App\Models\Transport;
 
