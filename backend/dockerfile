@@ -1,6 +1,6 @@
 FROM richarvey/nginx-php-fpm:latest
 
-COPY . .
+COPY backend/ .
 
 #Image cofig
 ENV SKIP_COMPOSER 1
