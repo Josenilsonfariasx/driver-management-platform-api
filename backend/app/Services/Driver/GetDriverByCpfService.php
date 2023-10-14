@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Driver;
 
 use App\Exceptions\AppError;
 use App\Models\Driver;

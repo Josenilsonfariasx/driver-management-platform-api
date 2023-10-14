@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Driver;
 
-use App\Services\GetDriverByPlateFromTransportService;
+use App\Http\Controllers\Controller;
+use App\Services\Driver\GetDriverByPlateFromTransportService;
 
 class GetDriverByPlateFromTransportController extends Controller {
   public function getDriverByPlate($plate){

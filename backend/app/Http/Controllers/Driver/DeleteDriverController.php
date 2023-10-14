@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Driver;
 use App\Http\Controllers\Controller;
-use App\Services\DeleteDriverService;
+use App\Services\Driver\DeleteDriverService;
 
 class DeleteDriverController extends Controller {
   public function delete(string $id){

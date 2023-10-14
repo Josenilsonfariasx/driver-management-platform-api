@@ -1,6 +1,8 @@
 <?php
-namespace App\Http\Controllers;
-use App\Services\GetDriverByNameService;
+namespace App\Http\Controllers\Driver;
+
+use App\Services\Driver\GetDriverByNameService;
+
 class GetDriverByNameController {
   public function getDriverByName(string $name){
     $getDriverByNameService = new GetDriverByNameService();

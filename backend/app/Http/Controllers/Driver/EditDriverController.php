@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Driver;
 use App\Http\Controllers\Controller;
+use App\Services\Driver\EditDriverService;
 use Illuminate\Http\Request;
-use App\Services\EditDriverService;
 
 class EditDriverController extends Controller {
   public function edit(Request $request, string $id){
