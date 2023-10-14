@@ -1,5 +1,3 @@
-Claro, aqui está a documentação em formato Markdown resumido para o seu projeto Laravel com Docker Compose. Basta copiar e colar o conteúdo abaixo:
-
 ```markdown
 # Projeto Laravel com Docker Compose
 
