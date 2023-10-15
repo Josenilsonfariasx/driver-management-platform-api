@@ -8,8 +8,7 @@ use Illuminate\Support\Collection;
 
 class GetDriverByNameService {
   public function execute(string $name): Collection {
-    $normalizedName = mb_strtolower($name);
-    $drivers = Driver::where('name', 'LIKE', '%' . $normalizedName . '%')->get();
+    $drivers = Driver::where('name', 'ILIKE', '%' . $name . '%')->get();
     if ($drivers->isEmpty()) {
       throw new AppError('Drivers not found', 404);
     }
