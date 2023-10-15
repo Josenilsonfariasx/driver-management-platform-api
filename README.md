@@ -14,10 +14,10 @@
 1. Clone o repositório:
 
   ```
-     git clone https://github.com/seurepositorio/projeto-laravel-docker.git
+     git clone https://github.com/Josenilsonfariasx/driver-management-platform-api
   ```
   ```
-     cd projeto-laravel-docker
+     cd BACKEND
    ```
 
 2. Configure o Docker Compose:
@@ -32,29 +32,32 @@
    cp .env.example .env
 ```
 
+# Com o docker rodando em um terminal abra outro terminal e digite os seguintes comandos
+
+```bash
+    docker exec -it backend_laravel.test_1 /bin/sh
+```
+
 ## Banco de Dados
 
 4. Execute as migrações:
 
 ```bash
-   docker-compose exec app php artisan migrate
+    php artisan migrate
 ```
 
 5. Execute os seeders:
 
 ```bash
-   docker-compose exec app php artisan db:seed
+   php artisan db:seed
 ```
 
 ## Executando
 
-6. Inicie o servidor:
-
+7. Acesse em
 ```bash
-   docker-compose exec app php artisan serve --host=0.0.0.0 --port=8000
+   http://localhost:8000
 ```
-
-7. Acesse em [http://localhost:8000](http://localhost:8000).
 
 ## Dependências
 
@@ -75,6 +78,156 @@ MIT License
 - [Documentação do Laravel](https://laravel.com/docs)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
+
+
+-----------------------------------------------------------------------------------------------------------
+# Documentação API
+
+
+Rotas de Driver
+
+GET
+
+    /drivers - Retorna uma lista de todos os motoristas.
+    /drivers/{id}/info - Retorna as informações de um motorista específico, com base no seu ID.
+    /drivers/search/{name} - Retorna uma lista de motoristas com base no seu nome.
+    /drivers/search/cpf/{cpf} - Retorna uma lista de motoristas com base no seu CPF.
+    /drivers/search/plate/{plate} - Retorna o motorista associado à placa do transporte fornecida.
+
+
+
+POST
+
+    /drivers - Cria um novo motorista.
+    
+Exemplo de Criação
+
+    {
+    "name": "me2_soft",
+    "cpf": "098122132",
+    "telephone": "9897467152",
+    "password": "me2Softwares!31"
+    } 
+
+Possiveis erros
+
+    {
+	"errors": "There is already a person with this CPF.",
+	"errors": "There is already a person with this number from telephone.",
+	"errors": {
+		"name": "The name field is required.",
+		"cpf":  "The cpf field is required.",
+		"telephone":  "The telephone field is required.",
+		"password":   "The password field is required.",
+	  }
+    }
+
+
+
+PUT
+
+    /drivers/{id} - Atualiza as informações de um motorista existente.
+
+A rota de edição pode ser alterado 1 campo ou todos os campos a baixo
+
+    {
+    "name": "Josenilsona",
+    "cpf": "09739350d72",
+    "telephone": "731313138"
+    } 
+
+
+DELETE
+
+    /drivers/{uuid} - Deleta um motorista existente.
+Possivel erro passando uuid nao existente
+
+    {
+	"errors": "Driver not found"
+    }
+
+Exemplo de uso
+
+# Retornar as informações de um motorista específico, com base no seu ID
+    http://localhost:8000/drivers/1/info
+
+# Retornar uma lista de motoristas com base no seu nome
+    http://localhost:8000/drivers/search/John%20Doe
+
+# Retornar uma lista de motoristas com base no seu CPF
+    http://localhost:8000/drivers/search/cpf/12345678900
+
+# Retornar o motorista associado à placa do transporte fornecida
+    http://localhost:8000/drivers/search/plate/ABC-1234
+
+---------------------------------------------------------------------------------------------------------
+
+## Rotas de Transporte
+
+POST
+
+    /transport - Cria um novo transporte.
+
+PUT
+
+    /transport/{id} - Atualiza as informações de um transporte existente.
+
+DELETE
+
+    /transport/{id} - Deleta um transporte existente.
+
+Exemplo de uso
+
+# Criar um novo transporte e nao esqueça de fornecer o id do motorista dono do carro
+    {
+	"plate":"besta123",
+	"brand":"fiat",
+	"model":"palio",
+	"year":"1920",
+	"driver_id": "uuid_do_motorista"
+    } 
+Possiveis erros
+
+     {
+	   "errors": "Motorista não encontrado.
+     "errors": "Já existe um transporte com esta placa.
+     }
+
+
+# Atualizar as informações de um transporte existente podendo passar apenas um campo ou todos
+
+    {
+	"plate":"abc122",
+	"brand":"Ferrari",
+	"model":"X",
+	"year":"2029"
+    }
+    
+Possiveis erros
+
+      {
+	   "errors": "Motorista não encontrado.
+     "errors": "Já existe um transporte com esta placa.
+     }
+
+# Deletar um transporte existente
+    http://localhost:8000/transport/1
+
+Rotas de Admin
+
+POST
+
+    /auth/login - Autentica um administrador e retorna um token JWT.
+
+Exemplo de uso
+
+# Autentica um administrador e retorna um token JWT
+    {
+	"name":"me2_soft",
+	"password":"me2-teste"
+    } 
+
+Todas as rotas exigem autenticação, exceto a rota /auth/login.
 
 ## :Autor
   <table>
