@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string("year");
             $table->uuid('driver_id')->unique();
 
-            $table->foreign('driver_id')->references('id')->on('drivers');
+            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->timestamps();
         });
     }
