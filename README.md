@@ -69,16 +69,33 @@ Este projeto é uma solução valiosa para empresas que precisam gerenciar uma f
      cd BACKEND
    ```
 
-2. Configure o Docker Compose:
+2. Instale as dependencias:
 
 ```bash
-    docker-compose up -d
+    composer install
 ```
 
-3. Copie `.env.example` para `.env` e configure as variáveis de ambiente:
+3. Configure o docker:
+
+```bash
+    docker-compose up -d 
+```
+
+4. Copie `.env.example` para `.env` e configure as variáveis de ambiente:
 
 ```bash
    cp .env.example .env
+```
+
+5. Configure o database com o banco de dados padrao do laravel e docker .env:
+
+```bash
+	DB_CONNECTION=mysql
+	DB_HOST=mysql
+	DB_PORT=3306
+	DB_DATABASE=backend
+	DB_USERNAME=sail
+	DB_PASSWORD=password
 ```
 
 # Com o docker rodando em um terminal abra outro terminal e digite os seguintes comandos
@@ -107,6 +124,12 @@ Este projeto é uma solução valiosa para empresas que precisam gerenciar uma f
 ```bash
    http://localhost:8000
 ```
+
+---------------------------------------------------------------------------
+# Possiveis erros na instalação do projeto
+- Fique atento as permissões da sua maquina, o repositorio deve conter todas as permissões
+- Fique atento ao detalhe que o docker tem que ta em execução para que voce faça os comandos como por exemplo php artisan migrate/php artisan db:seed
+---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
 ## Caso queira integrar slack ao projeto
 [assista este video](https://www.youtube.com/watch?v=FuNZCdv8u-o)
